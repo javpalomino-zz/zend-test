@@ -9,20 +9,59 @@
 namespace Product\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
+use Doctrine\ODM\MongoDB\DocumentManager;
+use Product\Model\Product;
 
 class ProductController extends AbstractActionController
 {
-    public function indexAction() {
+    protected $documentManager;
+    protected $product_repository;
 
-        return "product";
+    public function __construct(DocumentManager $documentManager)
+    {
+        $this->documentManager = $documentManager;
+        $this->product_repository = $this->documentManager->getRepository(Product::class);
     }
 
-    public function detailAction() {
-        die($this->params()->fromRoute());
+    public function indexAction()
+    {
+        $viewModel = new ViewModel();
+
+        $products = $this->product_repository->findAll();
+
+        $viewModel->setVariable("products", $products);
+
+        return $viewModel;
+    }
+
+    public function createAction()
+    {
+        if($this->getRequest()->isPost()) {
+            $params = $this->params()->fromPost();
+            $product = new Product();
+
+            $product->setName($params['name']);
+            $product->setPrice($params['price']);
+            $product->setSku($params['sku']);
+
+            $this->documentManager->persist($product);
+            $this->documentManager->flush();
+
+            return $this->redirect()->toRoute('product');
+        }
+        return new ViewModel();
+    }
+
+    public function detailAction()
+    {
+        $params = $this->params()->fromRoute();
+
         return "product detail";
     }
 
-    public function detail() {
+    public function detail()
+    {
         //die($this->params()->fromRoute());
         return "product detail";
     }

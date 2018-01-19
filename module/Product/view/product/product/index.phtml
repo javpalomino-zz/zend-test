@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <h1>Products</h1>
+    <div class="form-group">
+        <a href="<?php echo $this->url('product-create') ?>" class="btn btn-primary"> Crear</a>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+        <table class="table table-bordered">
+            <thead>
+            <td>ID</td>
+            <td>SKU</td>
+            <td>NAME</td>
+            <td>PRICE</td>
+            </thead>
+
+            <tbody>
+            <?php foreach ($this->products as $product) { ?>
+                <tr>
+                    <td><?php echo $product->getId() ?></td>
+                    <td><?php echo $product->getSku() ?></td>
+                    <td><?php echo $product->getName() ?></td>
+                    <td><?php echo $product->getPrice() ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
