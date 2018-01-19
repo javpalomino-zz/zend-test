@@ -39,7 +39,6 @@ class ControllerFactory implements FactoryInterface
             $dataMapper = $container->get('doctrine.documentmanager.odm_default');
 
             //$dataMapper->getConnection()->setMongo(new MongoClient("mongodb://shell:root@localhost:27017"));
-
             return new $controllerName($dataMapper);
         }
         catch (Exception $exception) {

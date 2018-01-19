@@ -29,12 +29,20 @@ return [
                                 'id' => '[a-zA-Z][a-zA-Z0-9_-]+'
                             ],
                             'defaults' => [
-                                'controller' => Controller\ProductController::class,
                                 'action' => 'detail'
                             ]
                         ]
-                    ]
-                ]
+                    ],
+                    'create' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/create',
+                            'defaults' => [
+                                'action' => 'create'
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'product-category' => [
                 'type' => Literal::class,
@@ -43,20 +51,36 @@ return [
                     'defaults' => [
                         'controller' => Controller\ProductCategoryController::class,
                         'action' => 'index'
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'product-category-detail' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z][a-zA-Z0-9_-]+'
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ProductCategoryController::class,
+                                'action' => 'detail'
+                            ],
+                        ],
+                    ],
+                    'create' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/create',
+                            'defaults' => [
+                                'controller' => Controller\ProductCategoryController::class,
+                                'action' => 'create'
+                            ]
+                        ]
                     ]
-                ]
+                ],
             ],
-            'product-create' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route' => '/product/create',
-                    'defaults' => [
-                        'controller' => Controller\ProductController::class,
-                        'action' => 'create'
-                    ]
-                ]
-            ],
-        ]
+        ],
     ],
 
     'controllers' => [

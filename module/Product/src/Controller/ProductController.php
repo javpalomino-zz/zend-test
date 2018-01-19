@@ -16,19 +16,19 @@ use Product\Model\Product;
 class ProductController extends AbstractActionController
 {
     protected $documentManager;
-    protected $product_repository;
+    protected $productRepository;
 
     public function __construct(DocumentManager $documentManager)
     {
         $this->documentManager = $documentManager;
-        $this->product_repository = $this->documentManager->getRepository(Product::class);
+        $this->productRepository = $this->documentManager->getRepository(Product::class);
     }
 
     public function indexAction()
     {
         $viewModel = new ViewModel();
 
-        $products = $this->product_repository->findAll();
+        $products = $this->productRepository->findAll();
 
         $viewModel->setVariable("products", $products);
 
