@@ -89,5 +89,20 @@ class Product
         $this->sku = $sku;
     }
 
+    public function fillFromArray(array $data) {
+        $this->sku = $data['sku'] ?? null;
+        $this->name = $data['name'] ?? null;
+        $this->price = $data['price'] ?? null;
+    }
 
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'sku' => $this->sku,
+            'name' => $this->name,
+            'price' => $this->price,
+        ];
+
+    }
 }

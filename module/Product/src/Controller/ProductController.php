@@ -8,6 +8,8 @@
 
 namespace Product\Controller;
 
+use Product\Form\ProductForm;
+use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -37,32 +39,64 @@ class ProductController extends AbstractActionController
 
     public function createAction()
     {
-        if($this->getRequest()->isPost()) {
+        $form = new ProductForm();
+
+        if ($this->getRequest()->isPost()) {
             $params = $this->params()->fromPost();
-            $product = new Product();
+            $form->setData($params);
 
-            $product->setName($params['name']);
-            $product->setPrice($params['price']);
-            $product->setSku($params['sku']);
+            if ($form->isValid()) {
+                $product = new Product();
 
-            $this->documentManager->persist($product);
-            $this->documentManager->flush();
+                $data = $form->getData();
+                $product->fillFromArray($data['product']);
 
-            return $this->redirect()->toRoute('product');
+                $this->documentManager->persist($product);
+                $this->documentManager->flush();
+
+                return $this->redirect()->toRoute('product');
+            }
+
+            return $this->redirect()->toRoute('product/create');
         }
-        return new ViewModel();
+
+        return new ViewModel(['form' => $form]);
     }
 
     public function detailAction()
     {
         $params = $this->params()->fromRoute();
 
-        return "product detail";
+        $product = $this->productRepository->find($params['id']);
+
+        $form = new ProductForm();
+        $form->populateValues(['product' => $product->toArray()]);
+
+        if ($this->getRequest()->isPost()) {
+            $params = $this->params()->fromPost();
+            $form->setData($params);
+
+            if($form->isValid()) {
+                $data = $form->getData();
+                $product->fillFromArray($data['product']);
+
+                $this->documentManager->persist($product);
+                $this->documentManager->flush();
+
+                return $this->redirect()->toRoute('product');
+            }
+
+            return $this->redirect()->toRoute('product/detail', ['id' => $params['id']]);
+        }
+
+        return new ViewModel(['form' => $form]);
     }
 
-    public function detail()
+    private function getCreateProductForm()
     {
-        //die($this->params()->fromRoute());
-        return "product detail";
+        $form = new Form;
+
+
+        return $form;
     }
 }

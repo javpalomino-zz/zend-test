@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <h1>Shopping Lists</h1>
+    <div class="form-group">
+        <a href="<?php echo $this->url('product/create') ?>" class="btn btn-primary"> Crear</a>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+        <table class="table table-bordered">
+            <thead>
+            <td>ID</td>
+            <td>Registered Date</td>
+            <td>State</td>
+            <td>Actions</td>
+            </thead>
+
+            <tbody>
+            <?php foreach ($shopping_lists as $shopping_list) { ?>
+                <tr>
+                    <td><?php echo $shopping_list->getId() ?></td>
+                    <td><?php echo $shopping_list->getRegisterDate() ?></td>
+                    <td><?php echo $shopping_list->getIsActive() ? "Active" : "Past" ?></td>
+                    <td><a href="<?php echo $this->url('shopping/detail', ['id' => $shopping_list->getId()])?>" class="btn btn-primary">View</a></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>

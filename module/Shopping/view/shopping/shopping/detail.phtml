@@ -1,0 +1,36 @@
+<div class="jumbotron">
+    <h1>Shopping Detail</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+            <label class="control-label">List Order</label>
+            <label><?php echo $shopping_list->getId() ?></label>
+        </div>
+
+        <div class="control-label">
+            <label class="control-label"></label>
+            <label><?php echo $shopping_list->getRegisterDate() ?></label>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <td>SKU</td>
+                <td>Name</td>
+                <td>Price</td>
+            </thead>
+
+            <tbody>
+                <?php foreach ($shopping_list->getProducts() as $product) { ?>
+                    <tr>
+                        <td><?php echo $product->getSku() ?></td>
+                        <td><?php echo $product->getName() ?></td>
+                        <td><?php echo $product->getPrice() ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>

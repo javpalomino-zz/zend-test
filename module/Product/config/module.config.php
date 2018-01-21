@@ -21,12 +21,12 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'product-detail' => [
+                    'detail' => [
                         'type' => Segment::class,
                         'options' => [
                             'route' => '/:id',
                             'constraints' => [
-                                'id' => '[a-zA-Z][a-zA-Z0-9_-]+'
+                                'id' => '[a-zA-Z0-9_-]+'
                             ],
                             'defaults' => [
                                 'action' => 'detail'
@@ -92,10 +92,10 @@ return [
 
     'view_manager' => [
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
         'template_path_stack' => [
             __DIR__ . '/../view',
         ],

@@ -2,8 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/module/Shopping/src" isTestSource="false" packagePrefix="Shopping\" />
       <sourceFolder url="file://$MODULE_DIR$/module/Application/test" isTestSource="true" packagePrefix="ApplicationTest\" />
+      <sourceFolder url="file://$MODULE_DIR$/module/Auth/test" isTestSource="true" packagePrefix="AuthTest\" />
       <sourceFolder url="file://$MODULE_DIR$/module/Application/src" isTestSource="false" packagePrefix="Application\" />
+      <sourceFolder url="file://$MODULE_DIR$/module/Shopping/test" isTestSource="true" packagePrefix="ShoppingTest\" />
+      <sourceFolder url="file://$MODULE_DIR$/module/Product/test" isTestSource="true" packagePrefix="ProductTest\" />
       <sourceFolder url="file://$MODULE_DIR$/module/Auth/src" isTestSource="false" packagePrefix="Auth\" />
       <sourceFolder url="file://$MODULE_DIR$/module/Product/src" isTestSource="false" packagePrefix="Product\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/alcaeus/mongo-php-adapter" />
@@ -68,6 +72,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-form" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-http" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-i18n" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-inputfilter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-json" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-loader" />
@@ -152,6 +157,7 @@
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-form" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-http" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-i18n" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-inputfilter" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-json" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-loader" />
@@ -232,6 +238,7 @@
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-form" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-http" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-hydrator" />
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-i18n" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-inputfilter" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-json" />
           <root url="file://$MODULE_DIR$/vendor/zendframework/zend-loader" />

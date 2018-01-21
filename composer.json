@@ -22,18 +22,23 @@
         "zendframework/zend-session": "^2.7.1",
         "alcaeus/mongo-php-adapter": "^1.1",
         "doctrine/doctrine-module": "^1.2",
-        "doctrine/doctrine-mongo-odm-module": "^1.0"
+        "doctrine/doctrine-mongo-odm-module": "^1.0",
+        "zendframework/zend-i18n": "^2.6"
     },
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
             "Product\\": "module/Product/src/",
-            "Auth\\": "module/Auth/src/"
+            "Auth\\": "module/Auth/src/",
+            "Shopping\\": "module/Shopping/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ApplicationTest\\": "module/Application/test/"
+            "ApplicationTest\\": "module/Application/test/",
+            "ProductTest\\": "module/Product/test/",
+            "AuthTest\\": "module/Auth/test/",
+            "ShoppingTest\\": "module/Shopping/test/"
         }
     },
     "extra": [],
